@@ -10,31 +10,39 @@ PhoneBook::~PhoneBook()
 
 }
 
-void PhoneBook::add_contact()
+void PhoneBook::set_contact_field(Contact *c, const std::string& msg, int field)
 {
 	std::string tmp;
 
-	std::cout << "Enter first name:" << std::endl;
-	std::cin >> tmp;
-	this->_list[this->_current_cont].setFirstName(tmp);
+	if (std::cin.good())
+		std::cout << msg << std::endl;
+	std::getline(std::cin, tmp);
+	switch (field) {
+		case SET_FIRSTNAME:
+			c->setFirstName(tmp);
+			break;
+		case SET_LASTNAME:
+			c->setLastName(tmp);
+			break;
+		case SET_NICKNAME:
+			c->setNickname(tmp);
+			break;
+		case SET_NUMBER:
+			c->setPhoneNumber(tmp);
+			break;
+		default:
+			c->setDarkestSecret(tmp);
+	}
+}
 
-	std::cout << "Enter last name:" << std::endl;
-	std::cin >> tmp;
-	this->_list[this->_current_cont].setLastName(tmp);
 
-	
-	std::cout << "Enter nickname:" << std::endl;
-	std::cin >> tmp;
-	this->_list[this->_current_cont].setNickname(tmp);
-
-	std::cout << "Enter phone number:" << std::endl;
-	std::cin >> tmp;
-	this->_list[this->_current_cont].setPhoneNumber(tmp);
-	
-	std::cout << "Enter darkest secret:" << std::endl;
-	std::cin >> tmp;
-	this->_list[this->_current_cont].setDarkestSecret(tmp);
-
+void PhoneBook::add_contact()
+{
+	set_contact_field(&this->_list[this->_current_cont], "Enter first name", SET_FIRSTNAME);
+	set_contact_field(&this->_list[this->_current_cont], "Enter last name", SET_LASTNAME);
+	set_contact_field(&this->_list[this->_current_cont], "Enter nickname", SET_NICKNAME);
+	set_contact_field(&this->_list[this->_current_cont], "Enter phone number", SET_NUMBER);
+	set_contact_field(&this->_list[this->_current_cont], "Enter secret", SET_SECRET);
 	this->_list[this->_current_cont].setId(this->_current_cont);
 	this->_list[this->_current_cont].setIsSet(true);
 	this->_current_cont++;
@@ -51,3 +59,6 @@ void PhoneBook::search_contact() {
 	for (int i = 0; i < 8 && this->_list[i].isIsSet(); i++)
 		std::cout << this->_list[i] << std::endl;
 }
+
+
+

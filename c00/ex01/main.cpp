@@ -4,16 +4,17 @@ int main()
 {
 	std::string command;
 	PhoneBook book;
-	while (true)
+	std::cout << "Command list: ADD, SEARCH, EXIT" << std::endl;
+	while (std::getline(std::cin, command))
 	{
-		std::cout << "Command list: ADD, SEARCH, EXIT" << std::endl;
-		std::cin >> command;
 		if (command == "ADD")
 			book.add_contact();
 		else if (command == "SEARCH")
 			book.search_contact();
-		else if (command =="EXIT" || !command.length())
+		if (command =="EXIT")
 			break ;
+		if (std::cin.good())
+			std::cout << "Command list: ADD, SEARCH, EXIT" << std::endl;
 	}
 	return 0;
 }
