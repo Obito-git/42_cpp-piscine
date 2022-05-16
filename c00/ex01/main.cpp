@@ -4,8 +4,6 @@ int main()
 {
 	std::string command;
 	PhoneBook book;
-	Contact test;
-	std::cout << test << std::endl;
 	while (true)
 	{
 		std::cout << "Command list: ADD, SEARCH, EXIT" << std::endl;
@@ -14,7 +12,7 @@ int main()
 			book.add_contact();
 		else if (command == "SEARCH")
 			book.search_contact();
-		else if (command =="EXIT")
+		else if (command =="EXIT" || !command.length())
 			break ;
 	}
 	return 0;
