@@ -2,61 +2,45 @@
 
 Contact::Contact()
 {
-	std::cout << "Contact constructor is called" << std::endl;
+	this->_id = 0;
+	this->_is_set = false;
+}
+Contact::~Contact() {}
+
+void Contact::setId(int id) {
+	this->_id = id;
 }
 
-
-Contact::~Contact()
-{
-	std::cout << "Contact destructor is called" << std::endl;
+void Contact::setFirstName(const std::string &firstName) {
+	_first_name = firstName;
 }
 
-std::string Contact::get_first_name()
-{
-	return this->_first_name;
+void Contact::setLastName(const std::string &lastName) {
+	_last_name = lastName;
 }
 
-void Contact::set_first_name(std::string first_name)
-{
-	this->_first_name = first_name;
+void Contact::setNickname(const std::string &nickname) {
+	_nickname = nickname;
 }
 
-std::string Contact::get_last_name()
-{
-	return this->_last_name;
+void Contact::setPhoneNumber(const std::string &phoneNumber) {
+	_phone_number = phoneNumber;
 }
 
-void Contact::set_last_name(std::string last_name)
-{
-	this->_last_name = last_name;
+void Contact::setDarkestSecret(const std::string &darkestSecret) {
+	_darkest_secret = darkestSecret;
 }
 
-std::string Contact::get_nickname()
-{
-	return this->_nickname;
+std::ostream &operator<<(std::ostream &os, const Contact &contact) {
+	os << "_first_name: " << contact._first_name << " _last_name: " << contact._last_name << " _nickname: "
+	   << contact._nickname << " _phone_number: " << contact._phone_number;
+	return os;
 }
 
-void Contact::set_nickname(std::string nickname)
-{
-	this->_nickname = nickname;
+bool Contact::isIsSet() const {
+	return _is_set;
 }
 
-std::string Contact::get_phone_number()
-{
-	return this->_phone_number;
-}
-
-void Contact::set_phone_number(std::string phone_number)
-{
-	this->_phone_number = phone_number;
-}
-
-std::string Contact::get_darkest_secret()
-{
-	return this->_darkest_secret;
-}
-
-void Contact::set_darkest_secret(std::string darkest_secret)
-{
-	this->_darkest_secret = darkest_secret;
+void Contact::setIsSet(bool isSet) {
+	_is_set = isSet;
 }

@@ -51,21 +51,21 @@ build cmake_object_order_depends_target_cpp: phony || CMakeFiles/cpp.dir
 
 build CMakeFiles/cpp.dir/c00/ex01/Contact.cpp.o: CXX_COMPILER__cpp_Debug /home/amyroshn/Documents/cpp/c00/ex01/Contact.cpp || cmake_object_order_depends_target_cpp
   DEP_FILE = CMakeFiles/cpp.dir/c00/ex01/Contact.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++98
   INCLUDES = -I/home/amyroshn/Documents/cpp/c00/ex01
   OBJECT_DIR = CMakeFiles/cpp.dir
   OBJECT_FILE_DIR = CMakeFiles/cpp.dir/c00/ex01
 
 build CMakeFiles/cpp.dir/c00/ex01/main.cpp.o: CXX_COMPILER__cpp_Debug /home/amyroshn/Documents/cpp/c00/ex01/main.cpp || cmake_object_order_depends_target_cpp
   DEP_FILE = CMakeFiles/cpp.dir/c00/ex01/main.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++98
   INCLUDES = -I/home/amyroshn/Documents/cpp/c00/ex01
   OBJECT_DIR = CMakeFiles/cpp.dir
   OBJECT_FILE_DIR = CMakeFiles/cpp.dir/c00/ex01
 
 build CMakeFiles/cpp.dir/c00/ex01/PhoneBook.cpp.o: CXX_COMPILER__cpp_Debug /home/amyroshn/Documents/cpp/c00/ex01/PhoneBook.cpp || cmake_object_order_depends_target_cpp
   DEP_FILE = CMakeFiles/cpp.dir/c00/ex01/PhoneBook.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++98
   INCLUDES = -I/home/amyroshn/Documents/cpp/c00/ex01
   OBJECT_DIR = CMakeFiles/cpp.dir
   OBJECT_FILE_DIR = CMakeFiles/cpp.dir/c00/ex01
