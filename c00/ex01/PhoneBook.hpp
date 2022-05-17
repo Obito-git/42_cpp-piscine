@@ -1,5 +1,7 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
+
+#include <ostream>
 #include "Contact.hpp"
 #define SET_FIRSTNAME 1
 #define SET_LASTNAME 2
@@ -14,10 +16,11 @@ class PhoneBook{
 		void add_contact();
 		void search_contact();
 		static const int MAX_CONTACTS = 8;
-
 private:
 		int _current_cont;
         Contact _list[MAX_CONTACTS];
 		static void set_contact_field(Contact *c, const std::string& msg, int field);
+		static std::string set_format(const std::string &s);
+		static bool have_only_spaces(const std::string &msg);
 };
 #endif
