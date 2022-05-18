@@ -1,24 +1,22 @@
 NAME = zombie
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
-OBJ_DIR = obj
 SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
-OBJS  := $(%.cpp=$(OBJ_DIR)/%.o)
+OBJ/OBJECTS		=	$(patsubst %.cpp, obj/%.o, $(SRCS))
 
 all: $(NAME)
 	
-%.o: %.cpp
+obj/%.o: %.cpp Makefile | obj
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(CR_DIR) $(OBJS)
-		$(CC) -o $(NAME) $(OBJS) $(CFLAGS) 
+$(NAME): $(OBJ/OBJECTS)
+	$(CC) -o $(NAME) $^ $(CFLAGS)
 
-$(CR_DIR):
-		mkdir $(OBJ_DIR)
+obj:
+	mkdir obj
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(OBJ_DIR)
+	rm -rf obj
 	rm -f .*.swp
 	rm -f a.out
 
