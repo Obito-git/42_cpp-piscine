@@ -1,6 +1,9 @@
-#include <iostream>
+#include "Zombie.hpp"
 
 int main()
 {
-	std::cout << "Hello from clion 2" << std::endl;
+	randomChump("inside zombie");
+	Zombie *zomb = newZombie("Extern zombie");
+	zomb->announce();
+	delete zomb;
 }
