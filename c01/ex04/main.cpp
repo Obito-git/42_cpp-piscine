@@ -21,7 +21,7 @@ void replace_all(std::string &src, const std::string &old_substr, const std::str
 			src = new_substr + tmp;
 		else
 			src = src.substr(0,substr_pos).append(new_substr).append(tmp);
-		last_find = substr_pos = int(src.find(old_substr, last_find));
+		last_find = substr_pos = int(src.find(old_substr, last_find + new_substr.length()));
 	}
 }
 
