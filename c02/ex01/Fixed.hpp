@@ -16,14 +16,15 @@ public:
 	Fixed(const int numb);
 	Fixed(const float numb);
 	Fixed(const Fixed &old);
-	Fixed &operator=(Fixed const &other);
 	~Fixed();
+
 	int getRawBits() const;
 	void setRawBits(int fixPointNumb);
 	float toFloat(void) const;
 	int toInt(void) const;
 
 	friend std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
+	Fixed &operator=(Fixed const &other);
 };
 
 

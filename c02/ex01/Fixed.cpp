@@ -15,11 +15,12 @@ Fixed::Fixed() {
 }
 
 Fixed::Fixed(const int numb) {
+	std::cout << "Int constructor called" << std::endl;
 	_fix_point_numb = roundf(numb * (1 << Fixed::MAX_NUMB));
 }
 
 Fixed::Fixed(const float numb) {
-	std::cout << "Temp " << numb * 1 << Fixed::MAX_NUMB << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 	_fix_point_numb = roundf(numb * (float)(1 << Fixed::MAX_NUMB));
 }
 
