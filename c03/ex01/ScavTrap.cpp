@@ -22,14 +22,6 @@ ScavTrap::ScavTrap(const std::string &name) {
 	std::cout << "Calling ScavTrap name param constructor" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other)  : ClapTrap(other) {
-	_name = other._name;
-	_hp = other._hp;
-	_energy = other._energy;
-	_attack_dmg = other._energy;
-	std::cout << "Calling ScavTrap copy constructor" << std::endl;
-}
-
 /*
  *
  *              FUNCTIONS

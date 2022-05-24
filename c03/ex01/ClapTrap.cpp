@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(const ClapTrap &other) {
 	_name = other._name;
 	_hp = other._hp;
 	_energy = other._energy;
-	_attack_dmg = other._energy;
+	_attack_dmg = other._attack_dmg;
 	std::cout << "Calling ClapTrap copy constructor" << std::endl;
 }
 
