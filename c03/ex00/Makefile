@@ -1,6 +1,6 @@
 NAME = a.out
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
 SRCS = main.cpp ClapTrap.cpp
 OBJ/OBJECTS		=	$(patsubst %.cpp, obj/%.o, $(SRCS))
 
