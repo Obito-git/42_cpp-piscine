@@ -7,18 +7,10 @@
  *              CONSTRUCTORS
  */
 ScavTrap::ScavTrap() {
-	_name = "noname";
-	_hp = 100;
-	_energy = 50;
-	_attack_dmg = 20;
 	std::cout << "Calling ScavTrap default constructor" << std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string &name) {
-	_name = name;
-	_hp = 100;
-	_energy = 50;
-	_attack_dmg = 20;
+ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name){
 	std::cout << "Calling ScavTrap name param constructor" << std::endl;
 }
 
