@@ -8,18 +8,18 @@
 
 int main()
 {
-	FragTrap c_of_c("child of child");
+	FragTrap second("second child");
 
 	std::cout << std::endl << std::endl;
 
-	c_of_c.attack("child of child target");
+	second.attack("test target");
 
 	std::cout << std::endl << std::endl;
 
-	c_of_c.beRepaired(100);
-	c_of_c.takeDamage(100);
-	//c_of_c.guardGate(); can't heritate ScavTrap func
-	c_of_c.highFivesGuys();
+	second.beRepaired(100);
+	second.takeDamage(100);
+	//second.guardGate(); can't heritate ScavTrap func
+	second.highFivesGuys();
 
 	std::cout << std::endl << std::endl;
 }
