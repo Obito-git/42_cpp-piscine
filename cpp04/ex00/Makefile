@@ -1,12 +1,14 @@
 NAME = a.out
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3 -Iinc
+SRCS_DIR = srcs/
 SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
-OBJ/OBJECTS		=	$(patsubst %.cpp, obj/%.o, $(SRCS))
+OBJ/OBJECTS		=	$(patsubst $(SRCS_DIR)%.cpp, obj/%.o, $(SRCS))
+SRCS	:= $(foreach file,$(SRCS),$(SRCS_DIR)$(file))
 
 all: $(NAME)
 	
-obj/%.o: %.cpp Makefile | obj
+obj/%.o: $(SRCS_DIR)%.cpp Makefile | obj
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJ/OBJECTS)
@@ -18,7 +20,6 @@ obj:
 clean:
 	rm -rf obj
 	rm -f .*.swp
-	rm -f a.out
 
 fclean: clean
 	rm -f $(NAME)
