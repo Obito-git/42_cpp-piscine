@@ -1,0 +1,33 @@
+//
+// Created by amyroshn on 5/21/22.
+//
+
+#ifndef HARL_HPP
+#define HARL_HPP
+#include <iostream>
+#define MAX_LVL 4
+#define DEBUG "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!"
+#define INFO "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!"
+#define WARNING "I think I deserve to have some extra bacon for free."
+#define WARNING2 "I’ve been coming for years whereas you started working here since last month."
+#define ERROR "This is unacceptable! I want to speak to the manager now."
+
+class Harl {
+public:
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
+	void default_msg( void );
+	enum Level {
+		debug_o,
+		warning_o,
+		error_o,
+		info_o,
+		default_o
+	};
+	static Level get_level( std::string msg);
+};
+
+
+#endif //EX05_HARL_HPP
