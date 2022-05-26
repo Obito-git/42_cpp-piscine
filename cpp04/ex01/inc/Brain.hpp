@@ -13,7 +13,7 @@ public:
 	std::string ideas[_IDEAS_COUNT];
 	Brain &operator=(const Brain &other);
 	Brain();
-	Brain(const Brain &other);
+	Brain(Brain &other);
 
 	virtual ~Brain();
 };

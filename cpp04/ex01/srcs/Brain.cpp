@@ -19,7 +19,7 @@ Brain &Brain::operator=(const Brain &other){
 	return (*this);
 }
 
-Brain::Brain(const Brain &other) {
+Brain::Brain(Brain &other) {
 	std::cout << "Copy Brain constructor called" << std::endl;
 	for (int i = 0; i < Brain::_IDEAS_COUNT; i++)
 		ideas[i] = other.ideas[i];
