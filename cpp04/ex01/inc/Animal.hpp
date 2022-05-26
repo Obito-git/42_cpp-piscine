@@ -6,8 +6,11 @@
 #define EX00_ANIMAL_HPP
 #include <string>
 #include <iostream>
+#include "Brain.hpp"
 
 class Animal {
+private:
+	Brain *brain;
 protected:
 	std::string type;
 public:
@@ -18,6 +21,7 @@ public:
 	Animal &operator=(const Animal &other);
 
 	virtual void makeSound() const;
+	virtual 	Brain *getBrain() const;
 
 	const std::string &getType() const;
 };

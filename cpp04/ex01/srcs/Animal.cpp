@@ -19,15 +19,21 @@ Animal::~Animal() {
 
 Animal &Animal::operator=(const Animal &other) {
 	std::cout << "Assignment operator called" << std::endl;
-	this->type = other.type;
+	brain = other.brain;
+	type = other.type;
 	return (*this);
 }
 
 Animal::Animal(const Animal &other) {
-	this->type = other.type;
+	type = other.type;
+	brain = other.brain;
 }
 
 const std::string &Animal::getType() const {
 	std::cout << "Animal get type called" << std::endl;
 	return type;
+}
+
+Brain *Animal::getBrain() const {
+	return NULL;
 }
