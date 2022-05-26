@@ -23,8 +23,21 @@ Brain *Cat::getBrain() const {
 	return brain;
 }
 
-AAnimal &Cat::operator=(const AAnimal &other) {
-	other.
+Cat::Cat(AAnimal &other) {
+	std::cout << "Copy dog constructor called" << std::endl;
+	brain = new Brain(*other.getBrain());
+	type = other.getType();
+}
+
+Cat &Cat::operator=(const AAnimal &other) {
+	std::cout << "Cat assigment operator called" << std::endl;
+	type = other.getType();
+	brain = other.getBrain();
 	return (*this);
+}
+
+const std::string &Cat::getType() const {
+	std::cout << "Cat getype called" << std::endl;
+	return type;
 }
 

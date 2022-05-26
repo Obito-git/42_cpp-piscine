@@ -5,16 +5,19 @@
 #ifndef EX00_DOG_HPP
 #define EX00_DOG_HPP
 #include "AAnimal.hpp"
-#include "Brain.hpp"
 
 class Dog : public AAnimal{
 private:
 	Brain *brain;
 public:
-	Brain *getBrain() const;
 	Dog();
-	void makeSound() const;
+	Dog(AAnimal &other);
 	~Dog();
+
+	virtual void makeSound() const;
+	virtual Brain *getBrain() const;
+	virtual const std::string &getType() const;
+	virtual Dog &operator=(const AAnimal &other);
 };
 
 

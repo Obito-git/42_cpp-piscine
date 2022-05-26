@@ -9,12 +9,12 @@
 
 class Brain {
 public:
+	Brain(Brain &other);
+
 	static const int _IDEAS_COUNT = 100;
 	std::string ideas[_IDEAS_COUNT];
 	Brain &operator=(const Brain &other);
 	Brain();
-	Brain(const Brain &other);
-
 	virtual ~Brain();
 };
 
