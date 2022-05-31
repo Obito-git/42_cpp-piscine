@@ -11,15 +11,17 @@ class Animal {
 protected:
 	std::string type;
 public:
+	//constructor/destructor
 	Animal();
 	Animal(const Animal &other);
 	virtual ~Animal();
 
-	Animal &operator=(const Animal &other);
-
+	//methods
 	virtual void makeSound() const;
-
 	const std::string &getType() const;
+
+	//overloading
+	Animal& operator=(const Animal& other);
 };
 
 

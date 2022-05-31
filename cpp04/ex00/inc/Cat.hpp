@@ -8,9 +8,16 @@
 
 class Cat : public Animal{
 public:
+	//constructors/destructors
 	Cat();
-	void makeSound() const;
-	~Cat();
+	Cat(const Cat &other);
+	virtual ~Cat();
+
+	//methods
+	virtual void makeSound() const;
+
+	//overloading
+	Cat& operator=(const Cat& other);
 };
 
 

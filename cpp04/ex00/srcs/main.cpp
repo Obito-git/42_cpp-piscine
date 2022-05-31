@@ -21,11 +21,14 @@ int main()
 	delete meta;
 	delete j;
 	delete i;
-
 	std::cout << std::endl;
 	const WrongAnimal* wa = new WrongCat();
-	std::cout << "Wrong animal sound is :";
+	WrongCat wc;
+	std::cout << "---------" << std::endl << "Wrong animal sound is : ";
 	wa->makeSound();
-	std::cout << std::endl;
+	std::cout << "Wrong cat sound: ";
+	wc.makeSound();
+	std::cout << wc.getType() << std::endl;
+	std::cout << "---------" << std::endl;
 	delete wa;
 }

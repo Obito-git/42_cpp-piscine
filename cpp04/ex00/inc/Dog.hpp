@@ -8,9 +8,16 @@
 
 class Dog : public Animal{
 public:
+	//constructors / destructors
 	Dog();
-	void makeSound() const;
-	~Dog();
+	Dog(const Dog &other);
+	virtual ~Dog();
+
+	//methods
+	virtual void makeSound() const;
+
+	//overloading
+	Dog& operator=(const Dog& other);
 };
 
 

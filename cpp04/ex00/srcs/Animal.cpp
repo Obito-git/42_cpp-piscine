@@ -3,31 +3,38 @@
 //
 
 #include "Animal.hpp"
-
-void Animal::makeSound() const{
-	std::cout << "animal sound" << std::endl;
-}
+//Constructors/Destructors
 
 Animal::Animal() {
-	type = "Animal";
 	std::cout << "default animal constructor called" << std::endl;
+	type = "Animal";
+}
+
+Animal::Animal(const Animal &other) {
+	std::cout << "Copy animal constructor called" << std::endl;
+	this->type = other.type;
 }
 
 Animal::~Animal() {
 	std::cout << "default animal destructor called" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other) {
-	this->type = other.type;
-	std::cout << "Assignment operator called" << std::endl;
-	return (*this);
-}
+//methods
 
-Animal::Animal(const Animal &other) {
-	this->type = other.type;
+void Animal::makeSound() const{
+	std::cout << "animal sound" << std::endl;
 }
 
 const std::string &Animal::getType() const {
 	std::cout << "Animal get type called" << std::endl;
 	return type;
+}
+
+//overloading
+Animal& Animal::operator=(const Animal& other) {
+	std::cout << "Animal assignment operator called" << std::endl;
+	if (this == &other)
+		return (*this);
+	this->type = other.type;
+	return (*this);
 }
