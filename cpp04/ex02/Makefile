@@ -2,7 +2,7 @@ NAME = a.out
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3 -Iinc
 SRCS_DIR = srcs/
-SRCS = main.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp AAnimal.cpp
+SRCS = main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJ/OBJECTS		=	$(patsubst $(SRCS_DIR)%.cpp, obj/%.o, $(SRCS))
 SRCS	:= $(foreach file,$(SRCS),$(SRCS_DIR)$(file))
 

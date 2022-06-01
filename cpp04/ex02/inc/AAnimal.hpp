@@ -6,16 +6,18 @@
 #define EX00_ANIMAL_HPP
 #include <string>
 #include <iostream>
-#include "Brain.hpp"
 
 class AAnimal {
 protected:
 	std::string type;
 public:
-	virtual ~AAnimal() = 0;
+	//destructor
+	virtual ~AAnimal();
+
+	//methods
 	virtual void makeSound() const = 0;
-	virtual Brain *getBrain() const = 0;
-	virtual AAnimal &operator=(const AAnimal &other) = 0;
+	virtual void print_idea(int ind) = 0;
+	virtual void set_animal_idea(int ind, const std::string &idea) = 0;
 	virtual const std::string &getType() const = 0;
 };
 

@@ -11,15 +11,17 @@ class WrongAnimal {
 protected:
 	std::string type;
 public:
+	//constructors / destructors
 	WrongAnimal();
 	WrongAnimal(const WrongAnimal &other);
 	virtual ~WrongAnimal();
 
-	WrongAnimal &operator=(const WrongAnimal &other);
-
+	//methods
 	void makeSound() const;
-
 	const std::string &getType() const;
+
+	//overloading
+	WrongAnimal &operator=(const WrongAnimal &other);
 };
 
 

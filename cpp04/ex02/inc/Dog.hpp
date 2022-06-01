@@ -5,19 +5,25 @@
 #ifndef EX00_DOG_HPP
 #define EX00_DOG_HPP
 #include "AAnimal.hpp"
+#include "Brain.hpp"
 
 class Dog : public AAnimal{
 private:
 	Brain *brain;
 public:
+	//constructors / destructors
 	Dog();
-	Dog(AAnimal &other);
-	~Dog();
+	Dog(const Dog &other);
+	virtual ~Dog();
 
-	virtual void makeSound() const;
-	virtual Brain *getBrain() const;
-	virtual const std::string &getType() const;
-	virtual Dog &operator=(const AAnimal &other);
+	//overrided methods
+	void print_idea(int ind);
+	void set_animal_idea(int ind, const std::string &idea);
+	void makeSound() const;
+	const std::string &getType() const;
+
+	//overloading
+	Dog& operator=(const Dog& other);
 };
 
 
