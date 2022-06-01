@@ -7,63 +7,52 @@
 #include "WrongCat.hpp"
 
 int main() {
-	Animal *a = new Dog;
-
-	a->set_animal_idea(0, "First");
-	a->set_animal_idea(99, "Last");
-	a->print_idea(0);
-	a->print_idea(99);
-	delete a;
-
-	/*
+	std::cout << "============= SUBJECT TEST ==================" << std::endl;
 	Animal *array[20];
-	for (int i = 0; i < 10; i++) {
-		i < 5 ? array[i] = new Dog : array[i] = new Cat;
-		std::cout << std::endl;
+	for (int i = 0; i < 4; i++) {
+		i < 2 ? array[i] = new Dog : array[i] = new Cat;
+		std::cout << "------" << "Animal: " << i << " was created ------" << std::endl;
 	}
-	std::cout << "======================================" << std::endl;
-	for (int i = 0; i < 10; i++) {
+	std::cout << std::endl << std::endl << "=========== ARRAY CONTENT TEST ===========" << std::endl;
+	for (int i = 0; i < 4; i++) {
 		if (i == 0)
-			std::cout << "Expected 5 dogs:" << std::endl;
-		std::cout << array[i]->getType() << std::endl;
+			std::cout << "Expected 2 dogs:" << std::endl;
+		std::cout << "-----------------------" << std::endl << array[i]->getType() << std::endl;
 		array[i]->makeSound();
-		if (i == 4)
-			std::cout << std::endl << std::endl << "Expected 5 cats:" << std::endl;
+		if (i == 1)
+			std::cout << std::endl << std::endl << "Expected 2 cats:" << std::endl;
 	}
 	std::cout << std::endl;
-	Animal *tmp; //array[4] == Dog, array[5] == Cat
-
-
-	std::cout << "$$$$$$$-DEEP-COPY-TEST-PREPARATION-$$$$$$$$" << std::endl;
-	//adding Brains copy test
-	array[5]->getBrain()->ideas[0] = "First cat idea";
-	array[5]->getBrain()->ideas[99] = "Last cat idea";
-	array[4]->getBrain()->ideas[0] = "First dog idea";
-	array[4]->getBrain()->ideas[99] = "Last dog idea";
-
-	//Exchanging cat and dog
-	tmp = array[4];
-	array[4] = array[5];
-	array[5] = tmp;
-	std::cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" << std::endl << std::endl;
-	//type test
-	std::cout << "Expected cat" << std::endl;
-	array[4]->makeSound();
-	std::cout << "Expected dog" << std::endl;
-	array[5]->makeSound();
-	std::cout << std::endl;
-	//Brains test
-	std::cout << "Expected cat ideas: \""  << 	array[4]->getBrain()->ideas[0] + "\", \"";
-	std::cout << array[4]->getBrain()->ideas[99]+"\"" << std::endl;
-	std::cout << "Expected dog ideas: \""  << 	array[5]->getBrain()->ideas[0] + "\", \"";
-	std::cout << array[5]->getBrain()->ideas[99]+"\"" << std::endl << std::endl;
-
-	std::cout << "======================================" << std::endl;
-	std::cout << std::endl;
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 4; i++) {
 		delete array[i];
-		std::cout << std::endl;
+		std::cout << "------" << "Animal: " << i << " was deleted ------" << std::endl;
 	}
-	*/
+	std::cout << std::endl << std::endl << std::endl;
+	std::cout << "======================================" << std::endl;
+	std::cout << "======== SUBJECT TESTS FINISHED ======" << std::endl;
+	std::cout << "======================================" << std::endl;
+	std::cout << std::endl << std::endl << std::endl;
+
+
+
+
+
+	std::cout << "============= DEEP COPY TEST ==================" << std::endl;
+	Cat tmp;
+	tmp.set_animal_idea(0, "first");
+	tmp.set_animal_idea(99, "last");
+	std::cout << std::endl << std::endl << std::endl;
+	{
+		Cat a = tmp;
+		std::cout << std::endl << std::endl << std::endl;
+		std::cout << "Scope a ideas : " << std::endl;
+		a.print_idea(0);
+		a.print_idea(99);
+		std::cout << std::endl << std::endl << std::endl;
+	}
+	std::cout << "Out of scope tmp ideas : " << std::endl;
+	tmp.print_idea(0);
+	tmp.print_idea(99);
+
 	return 0;
 }

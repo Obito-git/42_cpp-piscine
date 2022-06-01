@@ -28,17 +28,6 @@ void Dog::makeSound() const{
 	std::cout << "Woof" << std::endl;
 }
 
-//overloading
-
-Dog& Dog::operator=(const Dog& other) {
-	std::cout << "Dog assignment operator called" << std::endl;
-	if (this == &other)
-		return (*this);
-	brain = new Brain(*other.brain);
-	type = other.type;
-	return (*this);
-}
-
 void Dog::print_idea(int ind) {
 	if (ind < 0 || ind > 99)
 		std::cout << "Not existing index" << std::endl;
@@ -52,4 +41,17 @@ void Dog::set_animal_idea(int ind, const std::string &idea) {
 	if (ind < 0 || ind > 99)
 		std::cout << "You should choose idea number from 0 to 99" << std::endl;
 	brain->setIdeas(ind, idea);
+}
+
+
+//overloading
+
+Dog& Dog::operator=(const Dog& other) {
+	std::cout << "Dog assignment operator called" << std::endl;
+	if (this == &other)
+		return (*this);
+	delete brain;
+	brain = new Brain(*other.brain);
+	type = other.type;
+	return (*this);
 }

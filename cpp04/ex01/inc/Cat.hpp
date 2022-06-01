@@ -18,6 +18,8 @@ public:
 
 	//methods
 	virtual void makeSound() const;
+	void print_idea(int ind);
+	void set_animal_idea(int ind, const std::string &idea);
 
 	//overloading
 	Cat& operator=(const Cat& other);
