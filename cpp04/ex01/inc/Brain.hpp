@@ -9,13 +9,20 @@
 
 class Brain {
 public:
-	static const int _IDEAS_COUNT = 100;
-	std::string ideas[_IDEAS_COUNT];
-	Brain &operator=(const Brain &other);
+	//constructors/destructors
 	Brain();
 	Brain(Brain &other);
-
 	virtual ~Brain();
+	//const
+	static const int IDEAS_COUNT = 100;
+	const std::string *getIdeas() const;
+	void setIdeas(int ind, const std::string &idea);
+	//methods
+
+	//overloading
+	Brain &operator=(const Brain &other);
+private:
+	std::string ideas[IDEAS_COUNT];
 };
 
 

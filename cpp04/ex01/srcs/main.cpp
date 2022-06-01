@@ -7,6 +7,15 @@
 #include "WrongCat.hpp"
 
 int main() {
+	Animal *a = new Dog;
+
+	a->set_animal_idea(0, "First");
+	a->set_animal_idea(99, "Last");
+	a->print_idea(0);
+	a->print_idea(99);
+	delete a;
+
+	/*
 	Animal *array[20];
 	for (int i = 0; i < 10; i++) {
 		i < 5 ? array[i] = new Dog : array[i] = new Cat;
@@ -55,6 +64,6 @@ int main() {
 		delete array[i];
 		std::cout << std::endl;
 	}
-
+	*/
 	return 0;
 }

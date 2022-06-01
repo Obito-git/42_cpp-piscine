@@ -3,30 +3,26 @@
 //
 
 #include "Animal.hpp"
-
-void Animal::makeSound() const{
-	std::cout << "animal sound" << std::endl;
-}
+//Constructors/Destructors
 
 Animal::Animal() {
 	std::cout << "default animal constructor called" << std::endl;
 	type = "Animal";
 }
 
+Animal::Animal(const Animal &other) {
+	std::cout << "Copy animal constructor called" << std::endl;
+	this->type = other.type;
+}
+
 Animal::~Animal() {
 	std::cout << "default animal destructor called" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other) {
-	std::cout << "Assignment operator called" << std::endl;
-	brain = other.brain;
-	type = other.type;
-	return (*this);
-}
+//methods
 
-Animal::Animal(const Animal &other) {
-	type = other.type;
-	brain = other.brain;
+void Animal::makeSound() const{
+	std::cout << "animal sound" << std::endl;
 }
 
 const std::string &Animal::getType() const {
@@ -34,6 +30,23 @@ const std::string &Animal::getType() const {
 	return type;
 }
 
-Brain *Animal::getBrain() const {
-	return NULL;
+//overloading
+Animal& Animal::operator=(const Animal& other) {
+	std::cout << "Animal assignment operator called" << std::endl;
+	if (this == &other)
+		return (*this);
+	this->type = other.type;
+	return (*this);
 }
+
+void Animal::print_idea(int ind) {
+	(void) ind;
+	std::cout << "Not all animals have brain" << std::endl;
+}
+
+void Animal::set_animal_idea(int ind, const std::string &idea) {
+	(void) ind;
+	(void) idea;
+	std::cout << "Not all animals have brain" << std::endl;
+}
+
