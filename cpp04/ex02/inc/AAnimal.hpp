@@ -11,15 +11,20 @@ class AAnimal {
 protected:
 	std::string type;
 public:
-	//destructor
+	//constructor destructor
+	AAnimal();
+	AAnimal(const AAnimal &other);
 	virtual ~AAnimal();
+
+
 
 	//methods
 	virtual void makeSound() const = 0;
 	virtual void print_idea(int ind) = 0;
 	virtual void set_animal_idea(int ind, const std::string &idea) = 0;
 	virtual const std::string &getType() const = 0;
-};
+	AAnimal& operator=(const AAnimal& other);
+	};
 
 
 #endif //EX00_ANIMAL_HPP
