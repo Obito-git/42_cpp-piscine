@@ -1,0 +1,65 @@
+//
+// Created by amyroshn on 6/1/22.
+//
+
+#include "Bureaucrat.hpp"
+
+//constructors/destructors
+Bureaucrat::Bureaucrat() : _name("Unnamed"), _grade(150) {
+	std::cout << "Bureaucrat default constructor called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
+	std::cout << "Bureaucrat copy constructor called" << std::endl;
+}
+
+Bureaucrat::~Bureaucrat() {
+	std::cout << "Bureaucrat default destructor called" << std::endl;
+}
+
+
+Bureaucrat::Bureaucrat(const std::string &name, int grade): _name(name) {
+	std::cout << "Bureaucrat string/grade destructor called" << std::endl;
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	_grade = grade;
+}
+
+//methods
+
+const std::string &Bureaucrat::getName() const {
+	return _name;
+}
+
+int Bureaucrat::getGrade() const {
+	return _grade;
+}
+
+//overloading
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
+	os << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade;
+	return os;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other)
+{
+	if (this == &other)
+		return (*this);
+	std::cout << "Assigment operator was called" << std::endl << "ATTENTION! ";
+	std::cout << "The const name can't be changed, only grade will be copied" << std::endl;
+	_grade = other._grade;
+	return (*this);
+}
+
+//exceptions
+
+const char *Bureaucrat::GradeTooHighException::what() const throw() {
+	return ("Too high grade. The max grade is 1");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("Too low grade. The minimal grade is 150");
+}
