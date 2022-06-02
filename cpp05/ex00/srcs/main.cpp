@@ -17,10 +17,12 @@ int main()
 	try {
 		Bureaucrat b;
 		std::cout << std::endl << b << std::endl << std::endl;
-		Bureaucrat c("Sam", 100);
+		Bureaucrat c("Sam", 51);
 		std::cout << std::endl << c << std::endl << std::endl;
 		b = c;
 		std::cout << std::endl << b << std::endl << std::endl;
+		for ( int i = 1; i <= 50; i++)
+			c.incrementGrade();
 	}
 	catch (std::exception& e)
 	{

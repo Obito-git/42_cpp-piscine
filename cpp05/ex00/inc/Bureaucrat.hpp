@@ -13,19 +13,21 @@ private:
 	const std::string _name;
 	int _grade;
 public:
+	//constructors / destructor
+	Bureaucrat();
 	Bureaucrat(const std::string &name, int grade);
 	Bureaucrat(const Bureaucrat& other);
+	virtual ~Bureaucrat();
 
-	Bureaucrat();
+	//methods
+	const std::string &getName() const;
+	int getGrade() const;
+	void incrementGrade();
+	void decrementGrade();
 
+	//overloading
 	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 	Bureaucrat &operator=(const Bureaucrat& other);
-
-	const std::string &getName() const;
-
-	int getGrade() const;
-
-	virtual ~Bureaucrat();
 
 	//exceptions
 	class GradeTooHighException : public std::exception {

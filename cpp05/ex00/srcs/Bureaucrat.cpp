@@ -37,6 +37,18 @@ int Bureaucrat::getGrade() const {
 	return _grade;
 }
 
+void Bureaucrat::incrementGrade() {
+	if (_grade - 1 < 1)
+		throw GradeTooHighException();
+	_grade--;
+}
+
+void Bureaucrat::decrementGrade() {
+	if (_grade + 1 > 150)
+		throw GradeTooLowException();
+	_grade++;
+}
+
 //overloading
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
@@ -53,6 +65,10 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other)
 	_grade = other._grade;
 	return (*this);
 }
+
+
+
+
 
 //exceptions
 
