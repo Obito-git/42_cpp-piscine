@@ -6,21 +6,17 @@
 
 //constructors/destructors
 Bureaucrat::Bureaucrat() : _name("Unnamed"), _grade(150) {
-	std::cout << "Bureaucrat default constructor called" << std::endl;
 	std::cout << "Attention! You create a Unnamed bureaucrat with 150 grade" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat default destructor called" << std::endl;
 }
 
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade): _name(name) {
-	std::cout << "Bureaucrat string/grade destructor called" << std::endl;
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	if (grade < 1)
@@ -61,7 +57,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other)
 {
 	if (this == &other)
 		return (*this);
-	std::cout << "Assigment operator was called" << std::endl << "ATTENTION! ";
 	std::cout << "The const name can't be changed, only grade will be copied" << std::endl;
 	_grade = other._grade;
 	return (*this);
