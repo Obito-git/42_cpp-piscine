@@ -23,14 +23,17 @@ public:
 	virtual ~Bureaucrat();
 
 	//methods
+	void incrementGrade(int value);
+	void decrementGrade(int value);
+	void signForm(Form& form);
+	void executeForm(Form const & form);
+
+	//getters
 	const std::string &getName() const;
 	int getGrade() const;
-	void incrementGrade();
-	void decrementGrade();
-	void signForm(Form& form);
 
 	//overloading
-	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
+
 	Bureaucrat &operator=(const Bureaucrat& other);
 
 	//exceptions
@@ -44,5 +47,6 @@ public:
 	};
 };
 
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif //EX00_BUREAUCRAT_HPP

@@ -25,16 +25,16 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade): _name(name) {
 }
 
 //methods
-void Bureaucrat::incrementGrade() {
-	if (_grade - 1 < 1)
+void Bureaucrat::incrementGrade(int value) {
+	if (_grade - value < 1)
 		throw GradeTooHighException();
-	_grade--;
+	_grade -= value;
 }
 
-void Bureaucrat::decrementGrade() {
-	if (_grade + 1 > 150)
+void Bureaucrat::decrementGrade(int value) {
+	if (_grade + value > 150)
 		throw GradeTooLowException();
-	_grade++;
+	_grade += value;
 }
 
 void Bureaucrat::signForm(Form &form) {
@@ -46,6 +46,15 @@ void Bureaucrat::signForm(Form &form) {
 	else {
 		std::cout << _name << " couldn’t sign " << form.getName() << " because his grade is too low." << std::endl;
 		throw Form::GradeTooLowException("sign");
+	}
+}
+
+void Bureaucrat::executeForm(const Form &form) {
+	try {
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	} catch (std::exception& e) {
+		std::cout << "EXCEPTION: [" << e.what() << "]" << std::endl;
 	}
 }
 
@@ -61,7 +70,7 @@ int Bureaucrat::getGrade() const {
 //overloading
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
-	os << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade;
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return os;
 }
 
@@ -73,12 +82,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other)
 	_grade = other._grade;
 	return (*this);
 }
-
-
-
-
-
-
 
 //exceptions
 

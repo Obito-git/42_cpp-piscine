@@ -37,7 +37,7 @@ public:
 	void setIsSigned(bool isSigned);
 
 	//overloading
-	friend std::ostream &operator<<(std::ostream &os, const Form &form);
+
 	Form &operator=(const Form& other);
 
 	//exceptions
@@ -57,13 +57,13 @@ public:
 		virtual const char *what() const throw();
 	};
 
-class IsNotSignException: public std::exception {
-public:
-	virtual const char *what() const throw();
+	class IsNotSignException: public std::exception {
+	public:
+		virtual const char *what() const throw();
+	};
+
 };
 
-
-};
-
+std::ostream &operator<<(std::ostream &os, const Form &form);
 
 #endif //EX01_FORM_HPP
