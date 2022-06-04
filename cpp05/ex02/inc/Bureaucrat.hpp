@@ -7,6 +7,9 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 private:
@@ -24,6 +27,7 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+	void signForm(Form& form);
 
 	//overloading
 	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);

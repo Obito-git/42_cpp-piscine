@@ -26,7 +26,7 @@ public:
 	void decrementGrade();
 
 	//overloading
-	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
+
 	Bureaucrat &operator=(const Bureaucrat& other);
 
 	//exceptions
@@ -40,5 +40,6 @@ public:
 	};
 };
 
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif //EX00_BUREAUCRAT_HPP

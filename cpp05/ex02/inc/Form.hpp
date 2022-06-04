@@ -8,12 +8,14 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form {
 private:
 	const std::string _name;
 	bool _is_signed;
-	int _sign_grade;
-	int _exec_grade;
+	const int _sign_grade;
+	const int _exec_grade;
 public:
 	//constructors/destructors
 	Form();
@@ -24,6 +26,15 @@ public:
 	//methods
 	void beSigned(const Bureaucrat& buro);
 	virtual void execute(Bureaucrat const & executor) const = 0;
+
+	//getters
+	bool isSignedForm() const;
+	int getSignFormGrade() const;
+	const std::string &getName() const;
+	int getExecFormGrade() const;
+
+	//setters
+	void setIsSigned(bool isSigned);
 
 	//overloading
 	friend std::ostream &operator<<(std::ostream &os, const Form &form);
@@ -37,6 +48,7 @@ public:
 		GradeTooHighException(const char *m): msg(m){}
 		virtual const char *what() const throw();
 	};
+
 	class GradeTooLowException: public std::exception {
 	private:
 		const char *msg;
@@ -44,6 +56,13 @@ public:
 		GradeTooLowException(const char *m): msg(m){}
 		virtual const char *what() const throw();
 	};
+
+class IsNotSignException: public std::exception {
+public:
+	virtual const char *what() const throw();
+};
+
+
 };
 
 

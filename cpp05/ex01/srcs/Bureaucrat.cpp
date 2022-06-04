@@ -46,10 +46,22 @@ void Bureaucrat::decrementGrade() {
 	_grade++;
 }
 
+void Bureaucrat::signForm(Form &form) {
+	if (_grade <= form.getSignFormGrade() && !form.isSignedForm()) {
+		form.setIsSigned(true);
+		std::cout << _name << " signed " << form.getName()  << std::endl;
+	} else if (_grade <= form.getSignFormGrade() && form.isSignedForm())
+		std::cout << "Form " << form.getName() << " is already signed" << std::endl;
+	else {
+		std::cout << _name << " couldn’t sign " << form.getName() << " because his grade is too low." << std::endl;
+		throw Form::GradeTooLowException("sign");
+	}
+}
+
 //overloading
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
-	os << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade;
+	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return os;
 }
 

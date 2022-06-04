@@ -18,7 +18,7 @@ Form::Form(const std::string &name, int signGrade, int execGrade) : _name(name),
 		throw GradeTooLowException("sign");
 }
 
-Form::Form() : _name("Unnamed"), _sign_grade(150), _exec_grade(150){
+Form::Form() : _name("Unnamed"), _is_signed(false), _sign_grade(150), _exec_grade(150){
 	std::cout << "Attention! You create a Unnamed bureaucrat with 150 sign and exec grades" << std::endl;
 }
 
@@ -41,31 +41,54 @@ void Form::beSigned(const Bureaucrat &buro) {
 	}
 }
 
+//getters
+
+const std::string &Form::getName() const {
+	return _name;
+}
+
+bool Form::isSignedForm() const {
+	return _is_signed;
+}
+
+int Form::getSignFormGrade() const {
+	return _sign_grade;
+}
+
+//setters
+
+void Form::setIsSigned(bool isSigned) {
+	_is_signed = isSigned;
+}
+
 //overloading
 Form &Form::operator=(const Form& other)
 {
 	if (this == &other)
 		return (*this);
-	std::cout << "ATTENTION! The const name can't be changed, only grade will be copied" << std::endl;
-	_sign_grade = other._sign_grade;
-	_is_signed = other._is_signed;
-	_exec_grade = other._exec_grade;
+	std::cout << "ATTENTION! Form have only constant fields, nothing will be assign" << std::endl;
 	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &form) {
-	os << form._name << " form. " << (form._is_signed ? "Is signed. " : "Is not signed. ") << "Execution grade : ";
-	os << form._exec_grade << ". Sign grade: " << form._sign_grade;
+	os << form.getName() << " form. " << (form.isSignedForm() ? "Is signed. " : "Is not signed. ") << "Execution grade : ";
+	os << form.getExecFormGrade() << ". Sign grade: " << form.getSignFormGrade();
 	return os;
+}
+
+int Form::getExecFormGrade() const {
+	return _exec_grade;
 }
 
 //exceptions
 const char *Form::GradeTooHighException::what() const throw() {
-	return !strcmp(msg, "execute") ? ("Too high execution grade")
+	std::string s(msg);
+	return s == "execute" ? ("Too high execution grade")
 	                               : ("Too high sign grade");
 }
 
 const char *Form::GradeTooLowException::what() const throw() {
-	return !strcmp(msg, "execute") ? ("Too low execution grade")
+	std::string s(msg);
+	return s == "execute" ? ("Too low execution grade")
 	                               : ("Too low sign grade.");
 }

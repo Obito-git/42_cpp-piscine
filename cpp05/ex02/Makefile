@@ -2,7 +2,7 @@ NAME = a.out
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3 -Iinc
 SRCS_DIR = srcs/
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp
 OBJ/OBJECTS		=	$(patsubst $(SRCS_DIR)%.cpp, obj/%.o, $(SRCS))
 SRCS	:= $(foreach file,$(SRCS),$(SRCS_DIR)$(file))
 

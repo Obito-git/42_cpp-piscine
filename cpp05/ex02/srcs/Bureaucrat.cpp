@@ -25,15 +25,6 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade): _name(name) {
 }
 
 //methods
-
-const std::string &Bureaucrat::getName() const {
-	return _name;
-}
-
-int Bureaucrat::getGrade() const {
-	return _grade;
-}
-
 void Bureaucrat::incrementGrade() {
 	if (_grade - 1 < 1)
 		throw GradeTooHighException();
@@ -44,6 +35,27 @@ void Bureaucrat::decrementGrade() {
 	if (_grade + 1 > 150)
 		throw GradeTooLowException();
 	_grade++;
+}
+
+void Bureaucrat::signForm(Form &form) {
+	if (_grade <= form.getSignFormGrade() && !form.isSignedForm()) {
+		form.setIsSigned(true);
+		std::cout << _name << " signed " << form.getName()  << std::endl;
+	} else if (_grade <= form.getSignFormGrade() && form.isSignedForm())
+		std::cout << "Form " << form.getName() << " is already signed" << std::endl;
+	else {
+		std::cout << _name << " couldn’t sign " << form.getName() << " because his grade is too low." << std::endl;
+		throw Form::GradeTooLowException("sign");
+	}
+}
+
+//getters
+const std::string &Bureaucrat::getName() const {
+	return _name;
+}
+
+int Bureaucrat::getGrade() const {
+	return _grade;
 }
 
 //overloading
@@ -61,6 +73,8 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat& other)
 	_grade = other._grade;
 	return (*this);
 }
+
+
 
 
 

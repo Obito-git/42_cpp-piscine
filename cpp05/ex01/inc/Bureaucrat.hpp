@@ -2,11 +2,14 @@
 // Created by amyroshn on 6/1/22.
 //
 
-#ifndef EX00_BUREAUCRAT_HPP
-#define EX00_BUREAUCRAT_HPP
+#ifndef EX01_BUREAUCRAT_HPP
+#define EX01_BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 private:
@@ -24,11 +27,11 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+	void signForm(Form &form);
 
-	//overloading
-	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
+		//overloading
+
 	Bureaucrat &operator=(const Bureaucrat& other);
-
 	//exceptions
 	class GradeTooHighException : public std::exception {
 	public:
@@ -40,5 +43,6 @@ public:
 	};
 };
 
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
-#endif //EX00_BUREAUCRAT_HPP
+#endif //EX01_BUREAUCRAT_HPP
