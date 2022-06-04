@@ -31,3 +31,18 @@ Form *Intern::makeForm(const std::string &form_name, const std::string &target) 
 	if (res) { std::cout << "Intern creates " << form_name << std::endl; }
 	return res;
 }
+
+Intern::Intern() {}
+
+Intern& Intern::operator=(const Intern& other) {
+	(void) other;
+	return (*this);
+}
+
+Intern::~Intern() {
+
+}
+
+Intern::Intern(const Intern &other) {
+	(void) other;
+}

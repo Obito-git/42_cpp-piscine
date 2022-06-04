@@ -13,7 +13,12 @@ class Form;
 
 class Intern {
 public:
+	Intern();
+	Intern(const Intern& other);
 	Form *makeForm(const std::string& form_name, const std::string& target);
+	Intern &operator=(const Intern& other);
+	virtual ~Intern();
+
 private:
 	enum form_enumeration {
 		shrubbery_creation,
