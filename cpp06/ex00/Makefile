@@ -2,7 +2,7 @@ NAME = a.out
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -g3 -Iinc
 SRCS_DIR = srcs/
-SRCS = TypeConverter.cpp
+SRCS = TypeConverter.cpp main.cpp
 OBJ/OBJECTS		=	$(patsubst $(SRCS_DIR)%.cpp, obj/%.o, $(SRCS))
 SRCS	:= $(foreach file,$(SRCS),$(SRCS_DIR)$(file))
 

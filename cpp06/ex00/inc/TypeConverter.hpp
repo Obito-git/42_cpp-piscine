@@ -6,36 +6,43 @@
 #define EX00_STRINGTYPECONVERTER_HPP
 #include <cstdlib>
 #include <string>
+#include <iostream>
+#include <limits>
+
+#define T_INT       0
+#define T_CHAR      1
+#define T_FLOAT     2
+#define T_DOUBLE    3
 
 class StringTypeConverter {
 private:
-	//vars
 	std::string _s;
-	//char
-	char _c;
-	std::string _c_msg;
-	//int
-	int _i;
-	std::string _i_msg;
-	//float
-	float _f;
-	std::string _f_msg;
-	//double
-	double _d;
-	std::string _d_msg;
-	//methods
-	void transform();
+	struct Var {
+		Var(char type);
+		void *value;
+		char type;
+		std::string msg;
+		bool is_converted();
+		virtual ~Var();
+	};
+	Var _i;
+	Var _c;
+	Var _f;
+	Var _d;
+	bool is_special_case();
+	bool is_error_case();
 public:
-	//constructors/destructors
+	StringTypeConverter();
 	StringTypeConverter(const std::string &s);
-	//vars
-	const std::string P_INF = "+inf";
-	const std::string P_INFF = "+inff";
-	const std::string N_INF = "-inf";
-	const std::string N_INFF = "-inff";
-	const std::string P
 
-	void transform_char();
+
+
+	//exceptions
+private:
+	class WrongTypeException: public std::exception {
+	public:
+		const char *what() const throw();
+	};
 };
 
 
