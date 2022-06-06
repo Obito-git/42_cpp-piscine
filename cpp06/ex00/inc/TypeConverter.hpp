@@ -8,21 +8,16 @@
 #include <string>
 #include <iostream>
 #include <limits>
-
-#define T_INT       0
-#define T_CHAR      1
-#define T_FLOAT     2
-#define T_DOUBLE    3
+#include <iomanip>
 
 class StringTypeConverter {
 private:
 	std::string _s;
 	struct Var {
-		Var(char type);
+		Var();
 		void *value;
-		char type;
 		std::string msg;
-		bool is_converted();
+		bool is_converted() const;
 		virtual ~Var();
 	};
 	Var _i;
@@ -31,18 +26,17 @@ private:
 	Var _d;
 	bool is_special_case();
 	bool is_error_case();
+	double _parsed_d;
+	void cast_to_c();
+	void cast_to_i();
+	void cast_to_f();
+	void cast_to_d();
 public:
+	friend std::ostream &operator<<(std::ostream &os, const StringTypeConverter &converter);
+
 	StringTypeConverter();
 	StringTypeConverter(const std::string &s);
 
-
-
-	//exceptions
-private:
-	class WrongTypeException: public std::exception {
-	public:
-		const char *what() const throw();
-	};
 };
 
 
