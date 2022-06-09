@@ -8,19 +8,25 @@
 #include <iostream>
 
 template <typename T>
-void two_multiply(T *i) {
-	*i = *i * 2;
+void two_multiply(T &i) {
+	i = i * 2;
 }
 
 template<typename T>
-void two_devision(T *i) {
-	*i = *i / 2;
+void two_devision(T &i) {
+	i = i / 2;
 }
 
 template <typename T>
-void iter (T* a, int size, void (*f)(T*)) {
+void iter (T* a, int size, void (*f)(T&)) {
 	for (int i = 0; i < size; i++)
-		f(a + i);
+		f(a[i]);
+}
+
+template <typename T>
+void iter (const T* a, int size, void (*f)(const T&)) {
+	for (int i = 0; i < size; i++)
+		f(a[i]);
 }
 
 template <typename T>

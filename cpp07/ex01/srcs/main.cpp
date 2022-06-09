@@ -4,7 +4,6 @@
 #include "iter.hpp"
 #include <iostream>
 
-
 int main()
 {
 	std::cout << std::endl << "INT ARRAY * 2 TEST" << std::endl;
@@ -22,6 +21,7 @@ int main()
 	std::cout << std::endl << "CHAR ARRAY / 2 TEST" << std::endl;
 	char arr3[] = {104, 100};
 	print_arr(arr3, 2, "Before");
-	iter(arr3, 2, ::two_devision);
+	iter(arr3, 2, two_devision);
 	print_arr(arr3, 2, "After");
+
 }
